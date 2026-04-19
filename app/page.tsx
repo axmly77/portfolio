@@ -17,7 +17,7 @@ export default function Home() {
         <Contact />
       </main>
       <footer className="text-center py-6 text-[#8b949e] text-sm border-t border-[#21262d]">
-        © 2025 Shota Asano. Built with Next.js &amp; Tailwind CSS.
+        © 2025 y. Built with Next.js &amp; Tailwind CSS.
       </footer>
     </>
   );

@@ -4,14 +4,13 @@ export default function Hero() {
       <div className="max-w-3xl w-full">
         <p className="font-mono text-[#58a6ff] text-sm mb-4">Hi, I&apos;m</p>
         <h1 className="text-5xl md:text-7xl font-bold text-[#e6edf3] leading-tight mb-4">
-          Shota Asano
+          y
         </h1>
         <h2 className="text-2xl md:text-3xl font-semibold text-[#8b949e] mb-6">
-          Web Developer
+          AIネイティブ開発者
         </h2>
         <p className="text-[#8b949e] text-lg max-w-xl leading-relaxed mb-10">
-          TypeScript / React / Next.js / Python でプロダクトを作ります。
-          自動化・Webアプリ・AI連携が得意領域です。
+          20歳 / SESインフラエンジニアから自社開発エンジニアへ転向中 / AI活用で爆速開発 / TypeScript・Next.js・Claude API
         </p>
         <div className="flex flex-wrap gap-4">
           <a
