@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(python3 -c \"import paramiko; print\\('paramiko ok'\\)\")",
+      "Bash(python -c \"import paramiko; print\\('paramiko ok'\\)\")",
+      "Bash(python3 *)",
+      "Bash(python -c \"print\\('hello'\\)\")",
+      "Bash(python *)",
+      "Bash(where plink *)",
+      "Read(//c/Users/Matsu/.ssh/**)",
+      "Bash(python -c ' *)",
+      "Read(//tmp/**)",
+      "Bash(npm run *)"
+    ]
+  }
+}

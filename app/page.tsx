@@ -16,7 +16,13 @@ export default function Home() {
         <Skills />
         <Contact />
       </main>
-      <footer className="text-center py-6 text-[#8b949e] text-sm border-t border-[#21262d]">
+      <footer
+        className="text-center py-6 text-sm"
+        style={{
+          color: "#334155",
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+        }}
+      >
         © 2025 y. Built with Next.js &amp; Tailwind CSS.
       </footer>
     </>

@@ -1,3 +1,6 @@
+"use client";
+import { useInView } from "@/hooks/useInView";
+
 const projects = [
   {
     title: "CareerLens",
@@ -35,16 +38,7 @@ const projects = [
 
 function ExternalIcon() {
   return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
       <polyline points="15 3 21 3 21 9" />
       <line x1="10" y1="14" x2="21" y2="3" />
@@ -60,58 +54,86 @@ function GitHubIcon() {
   );
 }
 
-export default function Projects() {
+function ProjectCard({ p, delay }: { p: (typeof projects)[0]; delay: string }) {
+  const { ref, inView } = useInView();
   return (
-    <section id="projects" className="py-24 px-6 border-t border-[#21262d]">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#e6edf3] mb-10">
-          <span className="text-[#58a6ff] font-mono mr-2">02.</span>Projects
-        </h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((p) => (
-            <div
-              key={p.title}
-              className="bg-[#161b22] border border-[#21262d] rounded-lg p-6 flex flex-col hover:border-[#58a6ff]/50 transition-colors"
+    <div ref={ref} className="h-full">
+      <div
+        className={`card-glow reveal${inView ? " in-view" : ""} ${delay} h-full flex flex-col rounded-2xl p-6`}
+        style={{
+          background: "rgba(255,255,255,0.03)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          backdropFilter: "blur(12px)",
+        }}
+      >
+        <div className="flex items-start justify-between mb-3">
+          <h3 className="text-lg font-semibold" style={{ color: "#f1f5f9" }}>
+            {p.title}
+          </h3>
+          <div className="flex gap-3" style={{ color: "#4b5563" }}>
+            <a
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#818cf8] transition-colors"
+              aria-label="GitHub"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="text-lg font-semibold text-[#e6edf3]">{p.title}</h3>
-                <div className="flex gap-3 text-[#8b949e]">
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#58a6ff] transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <GitHubIcon />
-                  </a>
-                  {p.demo && (
-                    <a
-                      href={p.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#58a6ff] transition-colors"
-                      aria-label="Demo"
-                    >
-                      <ExternalIcon />
-                    </a>
-                  )}
-                </div>
-              </div>
-              <p className="text-[#8b949e] text-sm leading-relaxed flex-1 mb-4">
-                {p.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {p.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs font-mono text-[#58a6ff] bg-[#58a6ff]/10 px-2 py-1 rounded"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
+              <GitHubIcon />
+            </a>
+            {p.demo && (
+              <a
+                href={p.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#818cf8] transition-colors"
+                aria-label="Demo"
+              >
+                <ExternalIcon />
+              </a>
+            )}
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "#94a3b8" }}>
+          {p.description}
+        </p>
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {p.tech.map((t) => (
+            <span
+              key={t}
+              className="text-xs font-mono px-2.5 py-1 rounded-lg"
+              style={{
+                background: "rgba(99,102,241,0.1)",
+                border: "1px solid rgba(99,102,241,0.2)",
+                color: "#818cf8",
+              }}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Projects() {
+  const { ref, inView } = useInView();
+
+  return (
+    <section
+      id="projects"
+      className="py-24 px-6"
+      style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+    >
+      <div className="max-w-5xl mx-auto">
+        <div ref={ref} className={`reveal${inView ? " in-view" : ""} mb-10`}>
+          <h2 className="text-3xl font-bold" style={{ color: "#f1f5f9" }}>
+            <span className="gradient-text font-mono mr-2 text-2xl">02.</span>Projects
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((p, i) => (
+            <ProjectCard key={p.title} p={p} delay={`delay-${i + 1}`} />
           ))}
         </div>
       </div>

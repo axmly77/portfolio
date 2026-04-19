@@ -1,37 +1,57 @@
+"use client";
+import { useInView } from "@/hooks/useInView";
+
 export default function About() {
+  const { ref, inView } = useInView();
+
   return (
-    <section id="about" className="py-24 px-6 border-t border-[#21262d]">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#e6edf3] mb-10">
-          <span className="text-[#58a6ff] font-mono mr-2">01.</span>About
+    <section
+      id="about"
+      className="py-24 px-6"
+      style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+    >
+      <div ref={ref} className="max-w-3xl mx-auto">
+        <h2
+          className={`reveal${inView ? " in-view" : ""} text-3xl font-bold mb-10`}
+          style={{ color: "#f1f5f9" }}
+        >
+          <span className="gradient-text font-mono mr-2 text-2xl">01.</span>About
         </h2>
-        <div className="grid md:grid-cols-2 gap-12 text-[#8b949e] leading-relaxed">
-          <div className="space-y-4">
+        <div className="grid md:grid-cols-2 gap-12">
+          <div
+            className={`reveal${inView ? " in-view" : ""} delay-1 space-y-4 leading-relaxed`}
+            style={{ color: "#94a3b8" }}
+          >
             <p>
-              埼玉県在住のWebエンジニアです。TypeScript / React / Next.js を中心にフロントエンドを、
-              Python / Node.js でバックエンドや自動化ツールを開発しています。
+              20歳のAIネイティブ開発者です。SESインフラエンジニアとして働きながら、
+              自社開発エンジニアへの転向を目指しています。
             </p>
             <p>
-              個人開発では LINE Bot・Playwright による自動化基盤の構築や、
-              AI を活用したWebアプリのプロトタイプ制作に取り組んでいます。
+              Claude API・OpenAI を活用した爆速プロトタイピングを得意とし、
+              TypeScript / Next.js でフロントエンドからバックエンドまで一気通貫で開発します。
             </p>
             <p>
-              実務チームに入りながら、ユーザーに価値を届けるプロダクト開発に
-              貢献できるエンジニアを目指しています。
+              個人開発では LINE Bot 自動化基盤・求人マッチング Bot・AI タスク管理ツールを運用中。
+              実際に動くものを爆速で作ることにこだわっています。
             </p>
           </div>
-          <div className="space-y-3 text-sm">
+          <div
+            className={`reveal${inView ? " in-view" : ""} delay-2 space-y-3 text-sm`}
+            style={{ lineHeight: "1.9" }}
+          >
             {[
               ["場所", "埼玉県 / リモート可"],
               ["言語", "TypeScript, Python, JavaScript"],
               ["フレームワーク", "Next.js, React, Node.js"],
+              ["AI", "Claude API, OpenAI API"],
               ["インフラ", "Vercel, VPS (Ubuntu), PM2"],
-              ["ツール", "Playwright, Supabase, LINE API"],
               ["GitHub", "github.com/axmly77"],
             ].map(([label, value]) => (
               <div key={label} className="flex gap-3">
-                <span className="text-[#58a6ff] font-mono w-28 shrink-0">▹ {label}</span>
-                <span>{value}</span>
+                <span className="font-mono w-28 shrink-0" style={{ color: "#818cf8" }}>
+                  ▹ {label}
+                </span>
+                <span style={{ color: "#94a3b8" }}>{value}</span>
               </div>
             ))}
           </div>

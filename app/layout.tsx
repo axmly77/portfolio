@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shota Asano | Portfolio",
-  description: "Web developer portfolio — TypeScript, React, Next.js, Python",
+  title: "y | Portfolio",
+  description: "AIネイティブ開発者 — TypeScript・Next.js・Claude API",
 };
 
 export default function RootLayout({
@@ -25,9 +25,9 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#0d1117] text-[#e6edf3]">
+      <body className="min-h-full flex flex-col" style={{ background: "#050510", color: "#e2e8f0" }}>
         {children}
       </body>
     </html>
